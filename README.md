@@ -1,16 +1,57 @@
-# React + Vite
+# User Profile Viewer 👤
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Короткий опис проекту: Це React-компонент для відображення профілю користувача, який отримує дані з асинхронного API (JSONPlaceholder). Проект демонструє навички роботи з React Hooks (`useState`, `useEffect`), обробку станів завантаження/помилок та автоматизоване тестування.
 
-Currently, two official plugins are available:
+## 🚀 Функціонал
+- Виконання асинхронних GET-запитів.
+- Відображення індикатора завантаження під час очікування відповіді.
+- Обробка та виведення помилок у разі невдалого запиту.
+- Повне покриття тестами основних сценаріїв роботи.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Інструкції зі встановлення та запуску
 
-## React Compiler
+1. **Клонуйте репозиторій:**
+   ```bash
+   git clone <посилання-на-ваш-репозиторій>
+   cd lesson49
+Встановіть залежності:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Bash
 
-## Expanding the ESLint configuration
+npm install
+Також встановіть відповідні бібліотеки для працювання з тестами
+1. npm install --save-dev vitest @testing-library/react @testing-library/jest-dom @testing-library/user-event jsdom
+   
+   Якщо виористовуєте Type Script то використовуйте це псилання:
+2. npm install --save-dev typescript @types/react @types/react-dom @types/jsdom
+3. Налаштовуємо файл vite.config.ts
+/// <reference types="vitest" />
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    globals: true,       // Allows using `describe`, `it`, etc. without imports
+    environment: 'jsdom', // Simulates browser environment
+    setupFiles: './src/setupTests.ts', // Runs before tests
+    css: true,            // Enables CSS imports in tests
+  },
+});
+
+Запустіть проект у режимі розробки:
+
+Bash
+
+npm run dev
+Запустіть тести:
+
+Bash
+
+npm test
+Результат тесту має бути таким:
+(Подивіться в файлі src/components/test-screenshot.png)
+
+
+
+
