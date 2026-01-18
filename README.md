@@ -52,6 +52,8 @@ npm test
 Результат тесту має бути таким:
 (Подивіться в файлі src/components/test-screenshot.png)
 
+# Посилання на демо-версію
+git-lesson49.vercel.app
 
 
 
